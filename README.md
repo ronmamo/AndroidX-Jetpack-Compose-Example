@@ -2,8 +2,8 @@
 
 Based on [Material Rally app](https://material.io/design/material-studies/rally.html)
 
-![screenshot1](docs/screenshot1.jpg]
-![screenshot2](docs/screenshot2.jpg]
+![screenshot1](docs/screenshot1.jpg)
+![screenshot2](docs/screenshot2.jpg)
 
 This demo app uses kotlin and `androidx.*` published version `0.1.0-dev01`.
 
