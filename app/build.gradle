@@ -4,7 +4,6 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
-
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -20,7 +19,6 @@ android {
             //useIR = true
         }
     }
-
     buildTypes {
         release {
             minifyEnabled false
