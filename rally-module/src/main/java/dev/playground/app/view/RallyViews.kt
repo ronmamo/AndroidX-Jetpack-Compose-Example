@@ -6,7 +6,7 @@ import androidx.ui.foundation.VerticalScroller
 import androidx.ui.layout.Column
 import androidx.ui.layout.HeightSpacer
 import androidx.ui.layout.LayoutSize
-import androidx.ui.layout.padding
+import androidx.ui.layout.Padding
 import dev.playground.app.MockData.accountList
 import dev.playground.app.MockData.accountValue
 import dev.playground.app.MockData.billDetails
@@ -18,23 +18,25 @@ import dev.playground.app.components.ValueDetailsCard
 @Composable
 fun RallyOverviewCard() {
     VerticalScroller {
-        Column(modifier = padding(16.dp), mainAxisSize = LayoutSize.Expand) {
-            RallyAlertCard(
-                "Alerts", "See All",
-                "Heads up, you've used up 90% of your Shopping budget for this month.", "Sort"
-            )
-            HeightSpacer(height = 10.dp)
-            ValueDetailsCard(
-                "Accounts",
-                accountValue,
-                accountList
-            )
-            HeightSpacer(height = 10.dp)
-            ValueDetailsCard(
-                "Bills",
-                billsValue,
-                billDetails
-            )
+        Padding(16.dp) {
+            Column(mainAxisSize = LayoutSize.Expand) {
+                RallyAlertCard(
+                    "Alerts", "See All",
+                    "Heads up, you've used up 90% of your Shopping budget for this month.", "Sort"
+                )
+                HeightSpacer(height = 10.dp)
+                ValueDetailsCard(
+                    "Accounts",
+                    accountValue,
+                    accountList
+                )
+                HeightSpacer(height = 10.dp)
+                ValueDetailsCard(
+                    "Bills",
+                    billsValue,
+                    billDetails
+                )
+            }
         }
     }
 }

@@ -26,7 +26,7 @@ fun ValueDetailsCard(
         Column(mainAxisSize = LayoutSize.Expand) {
             TextValueColumn(title, value)
             Divider(color = rallyGreen, height = 1.dp)
-            Column(modifier = padding(12.dp), mainAxisSize = LayoutSize.Expand) {
+            Column(modifier = Spacing(12.dp), mainAxisSize = LayoutSize.Expand) {
                 DetailsRowView(details) { row ->
                     with(row) { RallyAccountRow(name, description, this.value, color) }
                     RallyDivider()
@@ -61,20 +61,22 @@ fun GraphDetailView(
 
 @Composable
 fun RallyAccountRow(name: String, number: String, amount: String, color: Color) {
-    FlexRow(padding(vertical = 12.dp)) {
-        inflexible {
-            ColoredRect(color = color, width = 4.dp, height = 36.dp)
-            WidthSpacer(width = 8.dp)
-            Column(mainAxisSize = LayoutSize.Expand, crossAxisAlignment = CrossAxisAlignment.Start) {
-                Text(text = name, style = +themeTextStyle { body1 })
-                Text(text = number, style = +themeTextStyle { subtitle1 })
+    Padding(12.dp) {
+        FlexRow {
+            inflexible {
+                ColoredRect(color = color, width = 4.dp, height = 36.dp)
+                WidthSpacer(width = 8.dp)
+                Column(mainAxisSize = LayoutSize.Expand, crossAxisAlignment = CrossAxisAlignment.Start) {
+                    Text(text = name, style = +themeTextStyle { body1 })
+                    Text(text = number, style = +themeTextStyle { subtitle1 })
+                }
             }
-        }
-        expanded(flex = 1.0f) {
-            FixedSpacer(width = 0.dp, height = 0.dp)
-        }
-        inflexible {
-            Text(text = amount, style = +themeTextStyle { h6 })
+            expanded(flex = 1.0f) {
+                FixedSpacer(width = 0.dp, height = 0.dp)
+            }
+            inflexible {
+                Text(text = amount, style = +themeTextStyle { h6 })
+            }
         }
     }
 }
@@ -86,31 +88,39 @@ fun GraphValue(
     proportions: List<Float>,
     colorSet: List<Color>
 ) {
-    Stack(padding(16.dp)) {
-        aligned(Alignment.Center) {
-            Container(height = 300.dp, expanded = true) {
-                DrawAnimatedCircle(proportions, colorSet)
+    Padding(16.dp) {
+        Stack {
+            aligned(Alignment.Center) {
+                Container(height = 300.dp, expanded = true) {
+                    DrawAnimatedCircle(proportions, colorSet)
+                }
+                TextValueColumn(title, value)
             }
-            TextValueColumn(title, value)
         }
     }
 }
 
 @Composable
 fun RallyAlertCard(title: String, action: String, text: String, secondaryAction: String) {
-    Column(padding(12.dp)) {
-        TextButtonRow(title, action) { }
-        Divider(padding(vertical = 12.dp), color = +themeColor { background }, height = 2.dp)
-        TextButtonFlexRow(text, secondaryAction) { }
+    Padding(12.dp) {
+        Column {
+            TextButtonRow(title, action) { }
+            Padding(12.dp) {
+                Divider(color = +themeColor { background }, height = 2.dp)
+            }
+            TextButtonFlexRow(text, secondaryAction) { }
+        }
     }
 }
 
 //
 @Composable
 fun DetailsRowView(details: List<SimpleModel>, block: @Composable() (SimpleModel) -> Unit) {
-    Column(modifier = padding(12.dp), mainAxisSize = LayoutSize.Expand) {
-        for (row in details) {
-            block(row)
+    Padding(12.dp) {
+        Column(mainAxisSize = LayoutSize.Expand) {
+            for (row in details) {
+                block(row)
+            }
         }
     }
 }
@@ -140,9 +150,11 @@ fun TextButtonRow(text: String, button: String, onClick: () -> Unit) {
 
 @Composable
 fun TextValueColumn(text: String, value: String) {
-    Column(modifier = padding(12.dp)) {
-        Text(text = text, style = +themeTextStyle { body1 })
-        Text(text = value, style = +themeTextStyle { h3 })
+    Padding(12.dp) {
+        Column {
+            Text(text = text, style = +themeTextStyle { body1 })
+            Text(text = value, style = +themeTextStyle { h3 })
+        }
     }
 }
 

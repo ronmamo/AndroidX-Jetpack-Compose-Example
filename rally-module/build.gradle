@@ -18,16 +18,13 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
         kotlinOptions {
 //            useIR = true
             freeCompilerArgs += "-P"
-            freeCompilerArgs +=
-                    "plugin:androidx.compose.plugins.kotlin:syntax=FCS"
+            freeCompilerArgs += "plugin:androidx.compose.plugins.kotlin:syntax=FCS"
         }
     }
-
     buildTypes {
         debug {}
         release {
@@ -35,13 +32,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -60,8 +54,11 @@ dependencies {
     implementation "androidx.ui:ui-framework:${androidx_version}"
     implementation "androidx.ui:ui-material:${androidx_version}"
     implementation "androidx.ui:ui-layout:${androidx_version}"
+    implementation "androidx.ui:ui-foundation:${androidx_version}"
+    implementation "androidx.ui:ui-text:${androidx_version}"
+    implementation "androidx.ui:ui-tooling:${androidx_version}"
 
     testImplementation "junit:junit:4.12"
-    androidTestImplementation "androidx.test:runner:1.1.1"
+    androidTestImplementation "androidx.test:runner:1.2.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
 }
